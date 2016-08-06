@@ -15,6 +15,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.StateSet;
+import android.view.MotionEvent;
 import android.widget.Button;
 
 public class CircularProgressButton extends Button {
@@ -687,5 +688,13 @@ public class CircularProgressButton extends Button {
                 return new SavedState[size];
             }
         };
+    }
+	
+	@Override
+    public boolean onTouchEvent(final MotionEvent event) {
+        if(mMorphingInProgress){
+            return true;
+        }
+        return super.onTouchEvent(event);
     }
 }
